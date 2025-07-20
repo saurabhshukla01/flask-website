@@ -51,8 +51,8 @@ def login():
         email = request.form['email']
         password = request.form['password']
         if email in users and users[email]['password'] == password:
-            return redirect(url_for('/'))  # ✅ Redirect to homepage
-            return 'Logged in successfully!'
+            return redirect(url_for('home'))  # ✅ Use function name, not URL
+            # return 'Logged in successfully!'
         else:
             flash('Invalid credentials')
     return render_template('login.html')
@@ -77,9 +77,19 @@ def reset_password():
         new_password = request.form['new_password']
         if email in users:
             users[email]['password'] = new_password
-            flash('Password reset successfully!')
+            
+            # Send email with new password
+            msg = Message(
+                subject="Your Password Has Been Reset",
+                sender="your@ethereal.email",  # Must match your MAIL_USERNAME
+                recipients=[email],
+                body=f"Hello,\n\nYour new password is: {new_password}\n\nIf you did not request this, please contact support."
+            )
+            mail.send(msg)
+
+            flash('Password reset successfully! A confirmation email has been sent.')
         else:
-            flash('Email not found')
+            flash('Email not found.')
     return render_template('reset_password.html')
 
 
