@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Feedbacks - FlaskSite{% endblock %}
+{% block content %}
+<header class="banner mb-5 mt-4">
+  <img src="{{ url_for('static', filename='images/two_tiger.jpg') }}" alt="Feedback Banner">
+  <div class="banner-text">
+    <h1>User Feedback</h1>
+    <p>What our clients say about our work and dedication.</p>
+  </div>
+</header>
+
+<div class="section">
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <blockquote class="blockquote">
+        <p>"FlaskSite helped us launch our product in record time. Amazing team!"</p>
+        <footer class="blockquote-footer">Neha Tiwari, <cite>StartupX</cite></footer>
+      </blockquote>
+    </div>
+    <div class="col-md-6 mb-4">
+      <blockquote class="blockquote">
+        <p>"Professional, responsive, and highly skilled in modern web tech."</p>
+        <footer class="blockquote-footer">Amit Kumar, <cite>BizTech</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
+{% endblock %}

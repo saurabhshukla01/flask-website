@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us - FlaskSite{% endblock %}
+{% block content %}
+
+<!-- 🔥 Banner Section -->
+<header class="mt-4 mb-5">
+  <img src="{{ url_for('static', filename='images/two_tiger.jpg') }}" alt="Banner Image">
+  <div class="banner-text">
+    <h1>Contact Us</h1>
+    <p>We’d love to hear from you. Let’s talk about your project!</p>
+  </div>
+</header>
+
+<!-- 📨 Contact Form Section -->
+<div class="section">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Get in Touch</h2>
+      <form>
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Your name">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="email@example.com">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" rows="5" placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename='images/frog.jpg') }}" class="img-fluid rounded mt-4 mt-md-0" alt="Contact Image">
+    </div>
+  </div>
+</div>
+
+<!-- 📍 Contact Info Section -->
+<div class="section bg-light">
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h5>📞 Phone</h5>
+      <p>+91 98765 43210</p>
+    </div>
+    <div class="col-md-4">
+      <h5>📧 Email</h5>
+      <p>hello@flasksite.com</p>
+    </div>
+    <div class="col-md-4">
+      <h5>📍 Address</h5>
+      <p>Noida Sector 62, Uttar Pradesh, India</p>
+    </div>
+  </div>
+</div>
+
+<!-- 📝 Blog/Info Section -->
+<div class="section">
+  <div class="text-center mb-4">
+    <h2>Recent Updates</h2>
+    <p class="text-muted">News, stories, and announcements from our team</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='images/tiger_1.jpg') }}" class="card-img-top" alt="Blog 1">
+        <div class="card-body">
+          <h5 class="card-title">Behind the Code: Our Work Culture</h5>
+          <p class="card-text">Discover how our team collaborates and thrives in a remote-first environment.</p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='images/tiger_2.jpg') }}" class="card-img-top" alt="Blog 2">
+        <div class="card-body">
+          <h5 class="card-title">Top 5 Flask Features We Love</h5>
+          <p class="card-text">Why Flask is our favorite framework for building web applications in 2025.</p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <img src="{{ url_for('static', filename='images/tiger_3.jpg') }}" class="card-img-top" alt="Blog 3">
+        <div class="card-body">
+          <h5 class="card-title">Client Success Stories</h5>
+          <p class="card-text">Real results from businesses that partnered with FlaskSite for digital growth.</p>
+          <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

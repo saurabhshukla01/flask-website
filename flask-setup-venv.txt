@@ -1,0 +1,159 @@
+For create venv folder for each project any flask or django Framework :
+
+how to do setup venv for each project :
+
+Creating a **virtual environment (venv)** for each Flask project is a best practice to isolate dependencies. Here's a step-by-step guide:
+
+---
+
+### ✅ Step-by-Step: Create `venv` for a Flask Project
+
+#### 1. **Navigate to Your Project Folder**
+
+If you don’t have a project folder yet:
+
+```bash
+mkdir flask_project
+cd flask_project
+```
+
+#### 2. **Create a Virtual Environment**
+
+Use Python's built-in `venv` module:
+
+```bash
+python -m venv venv
+```
+
+* `python` refers to your Python executable (you can use `python3` if needed).
+* `venv` is the name of the environment folder (you can name it anything like `.venv`, `env`, etc.).
+
+#### 3. **Activate the Virtual Environment**
+
+##### On **Windows**:
+
+```bash
+venv\Scripts\activate
+```
+
+##### On **macOS/Linux**:
+
+```bash
+source venv/bin/activate
+```
+
+#### 4. **Install Flask**
+
+Now that you're in the virtual environment:
+
+```bash
+pip install flask
+```
+
+#### 5. **Freeze Dependencies (Optional but Recommended)**
+
+To save your dependencies to a file:
+
+```bash
+pip freeze > requirements.txt
+```
+
+You can later install from this file in another environment using:
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 6. **Deactivate When Done**
+
+When you're finished working:
+
+```bash
+deactivate
+```
+
+---
+
+### 💡 Best Practices
+
+* Keep each Flask project in its own folder with a dedicated `venv`.
+* Always activate the environment before running the app or installing packages.
+* Add `venv/` to your `.gitignore` if you're using Git.
+
+---
+
+Let me know if you want a ready-made folder structure or a script to automate this setup.
+
+
+------------------------------------------
+
+Fix powershell issue not runing script direct >>
+
+You're getting this error because **PowerShell's execution policy** doesn't allow running scripts like `Activate.ps1`, which is needed to activate your virtual environment.
+
+---
+
+### ✅ Solution: Change PowerShell Execution Policy
+
+You can fix this by **temporarily or permanently changing the execution policy**.
+
+#### 🟡 Option 1: Temporarily Allow Script Execution (Recommended)
+
+Run PowerShell as Administrator and enter:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+```
+
+* ✅ This only affects the current PowerShell session.
+* 🔐 Safer because it doesn’t change system-wide settings.
+* Then, run:
+
+  ```powershell
+  .\venv\Scripts\Activate.ps1
+  ```
+
+---
+
+#### 🔵 Option 2: Permanently Change Execution Policy (If You Prefer)
+
+Run PowerShell **as Administrator** and enter:
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+* This allows locally created scripts to run (like `activate.ps1`).
+* Safer than `Unrestricted`, but still lets you activate venv.
+
+---
+
+### ✅ Alternative: Use CMD Instead of PowerShell
+
+If you prefer not to change PowerShell settings, you can use Command Prompt (CMD):
+
+```cmd
+venv\Scripts\activate.bat
+```
+
+Or from Git Bash:
+
+```bash
+source venv/Scripts/activate
+```
+
+---
+
+### 💡 Tip for VS Code Users
+
+To always open your terminal with CMD (if PowerShell is restricted):
+
+1. Go to **File > Preferences > Settings**.
+2. Search for **"terminal.integrated.defaultProfile.windows"**.
+3. Change it to `"Command Prompt"`.
+
+---
+
+Let me know if you'd like a command to auto-create the venv, activate it, and install Flask!
+
+

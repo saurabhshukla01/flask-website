@@ -1,0 +1,118 @@
+from flask import Flask, render_template, request, redirect, url_for, flash
+from flask_mail import Mail, Message
+
+app = Flask(__name__)
+
+app.secret_key = 'supersecretkey'
+
+# Ethereal test account settings  ( https://ethereal.email )
+app.config['MAIL_SERVER'] = 'smtp.ethereal.email'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'kaitlin.von@ethereal.email'  # replace
+app.config['MAIL_PASSWORD'] = '8C3ABNkUZWr2xBMFcX'   # replace
+app.config['MAIL_DEFAULT_SENDER'] = 'kaitlin.von@ethereal.email'
+
+mail = Mail(app)
+
+# Dummy user data for demo purposes
+users = {'test@example.com': {'password': '123456'}}
+
+# for auth related action & code 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        users[email] = {'password': password}
+
+        # ✅ Send confirmation email
+        try:
+            msg = Message('Registration Successful',
+                          recipients=[email])
+            msg.body = f"Hi {email},\n\nThanks for registering on our site!"
+            mail.send(msg)
+            flash('Registration email sent!', 'success')
+        except Exception as e:
+            print("Email failed:", e)
+            flash('Could not send confirmation email.', 'warning')
+
+        return redirect(url_for('thank_you'))
+    return render_template('register.html')
+
+
+@app.route('/thank-you')
+def thank_you():
+    return render_template('thank_you.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        if email in users and users[email]['password'] == password:
+            return redirect(url_for('/'))  # ✅ Redirect to homepage
+            return 'Logged in successfully!'
+        else:
+            flash('Invalid credentials')
+    return render_template('login.html')
+
+@app.route('/change-password', methods=['GET', 'POST'])
+def change_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        old_password = request.form['old_password']
+        new_password = request.form['new_password']
+        if email in users and users[email]['password'] == old_password:
+            users[email]['password'] = new_password
+            flash('Password changed successfully!')
+        else:
+            flash('Invalid email or password')
+    return render_template('change_password.html')
+
+@app.route('/reset-password', methods=['GET', 'POST'])
+def reset_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        new_password = request.form['new_password']
+        if email in users:
+            users[email]['password'] = new_password
+            flash('Password reset successfully!')
+        else:
+            flash('Email not found')
+    return render_template('reset_password.html')
+
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+@app.route('/about')
+def aboutUs():
+    return render_template('aboutus.html')
+
+@app.route('/contact')
+def contactUs():
+    return render_template('contactus.html')
+
+@app.route('/feedbacks')
+def feedbacks():
+    return render_template('feedbacks.html')
+
+@app.route('/products')
+def products():
+    return render_template('products.html')
+
+@app.route('/services')
+def services():
+    return render_template('services.html')
+
+@app.route('/social')
+def social():
+    return render_template('social.html')
+
+
+# Standard way to run the app
+if __name__ == "__main__":
+    app.run(debug=True)
+    # OR app.run(host='0.0.0.0', port=120, debug=True)

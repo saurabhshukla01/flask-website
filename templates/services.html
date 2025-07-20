@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Services - FlaskSite{% endblock %}
+{% block content %}
+<header class="banner mb-5 mt-4">
+  <img src="{{ url_for('static', filename='images/two_tiger.jpg') }}" alt="Services Banner">
+  <div class="banner-text">
+    <h1>Our Services</h1>
+    <p>We deliver tailored technology solutions for businesses of all sizes.</p>
+  </div>
+</header>
+
+<div class="section">
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <h4>🌐 Web Development</h4>
+      <p>Fast, scalable, and secure web applications using Flask and modern frameworks.</p>
+    </div>
+    <div class="col-md-4 mb-4">
+      <h4>🎨 UI/UX Design</h4>
+      <p>Creative and user-friendly interface designs with a focus on experience.</p>
+    </div>
+    <div class="col-md-4 mb-4">
+      <h4>☁️ Cloud Services</h4>
+      <p>Deploy and scale apps using AWS, GCP, or Azure infrastructure.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

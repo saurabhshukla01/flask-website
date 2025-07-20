@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Home - FlaskSite{% endblock %}
+{% block content %}
+<header class="mt-4 mb-5">
+  <img src="{{ url_for('static', filename='images/tiger_shade.jpg') }}" alt="Banner">
+</header>
+
+<div class="text-center section">
+  <h1 class="display-5">Welcome to FlaskSite</h1>
+  <p class="lead">We build modern, responsive, and high-performance web applications using Python and Flask.</p>
+  <a href="/contact" class="btn btn-primary mt-3">Contact Us</a>
+</div>
+
+<div class="row section text-center">
+  <div class="col-md-4">
+    <img src="{{ url_for('static', filename='images/tiger_1.jpg') }}" class="img-fluid rounded mb-2" alt="Development">
+    <h5>Web Development</h5>
+    <p>We craft scalable and fast web solutions tailored to your business needs.</p>
+  </div>
+  <div class="col-md-4">
+    <img src="{{ url_for('static', filename='images/tiger_2.jpg') }}" class="img-fluid rounded mb-2" alt="UI/UX">
+    <h5>UI/UX Design</h5>
+    <p>Modern and intuitive design that provides excellent user experience.</p>
+  </div>
+  <div class="col-md-4">
+    <img src="{{ url_for('static', filename='images/tiger_3.jpg') }}" class="img-fluid rounded mb-2" alt="Cloud">
+    <h5>Cloud Deployment</h5>
+    <p>We deploy and scale your apps on the cloud with best practices.</p>
+  </div>
+</div>
+{% endblock %}

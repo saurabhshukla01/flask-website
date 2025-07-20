@@ -1,0 +1,82 @@
+/* Global body font */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+}
+
+header .banner {
+    margin: 20px; /* or adjust as needed */
+    padding: 20px;
+}
+
+/* Full-width banner image */
+header img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Standard section padding */
+.section {
+    padding: 60px 0;
+}
+
+/* Optional: override container width for custom max width */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Ensure cards and images don't overflow */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Start social icon style css */
+
+/* Social icon styling */
+.social-icon {
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  margin: 0 auto; /* center image */
+  display: block;
+}
+
+/* Social card hover effect */
+.social-card:hover .social-icon {
+  transform: scale(1.15);
+}
+
+.social-card:hover p {
+  color: #007bff;
+}
+
+/* Center card content and style */
+.social-card .p-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.social-card:hover .p-3 {
+  box-shadow: 0 0 15px rgba(0, 123, 255, 0.25);
+}
+
+/* Optional: rounded container */
+.social-card .p-3 {
+  border-radius: 12px;
+}
+
+/* End social icon style css */
